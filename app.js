@@ -1,6 +1,7 @@
 const fs = require("fs");
 const readline = require('readline');
 
+/*Methods*/
 const readData = (filepath) => {
     try{
     let fd = fs.openSync(filepath, "r");
@@ -18,12 +19,30 @@ const writeData = (filepath, data) => {
     });
 };
 
-let filepath1 = './input.txt';
-let filepath2 = './output.txt';
+/*App.Started()*/
+let paths;
 
-let data = readData(filepath1);
+process.stdin.on('data', function (chunk) {
+  console.log('get data: ', chunk.toString())
+  paths = chunk.toString().split(' ');
+  //////
+let obj = {
+    input: paths[0],
+    output: paths[1],
+    gameType:0,
+    rescount:0,
+    armyCount:0,
+    points:0
+    };
 
-for (let i=0; i<data.length;i++)
-    console.log(i + ' ' + data[i]);
+console.log('inp: ' + obj.input);
 
-writeData(filepath2,data[1]);
+
+  /////
+  process.exit();
+});
+
+process.stdin.on('exit', function () {
+
+});
+
