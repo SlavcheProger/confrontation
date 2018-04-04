@@ -1,9 +1,9 @@
 const fs = require("fs");
 const readline = require('readline');
 
-const readData = (filename) => {
+const readData = (filepath) => {
     try{
-    let fd = fs.openSync("./" + filename, "r");
+    let fd = fs.openSync(filepath, "r");
     let data = fs.readFileSync(fd).toString().split('\n');  
     fs.closeSync(fd); 
     return data;
@@ -11,8 +11,8 @@ const readData = (filename) => {
     catch(err){console.log(err);}
 };
 
-let filename = 'input.txt';
-let data = readData(filename);
+let filepath = './input.txt';
+let data = readData(filepath);
 
 for (let i=0; i<data.length;i++)
     console.log(i + ' ' + data[i]);
